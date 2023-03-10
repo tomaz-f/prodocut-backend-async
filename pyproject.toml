@@ -1,10 +1,9 @@
 [tool.poetry]
 name = "product-backend-async"
 version = "0.1.0"
-description = "backend for product management"
+description = ""
 authors = ["Felipe <tomazalvesfelipe@gmail.com>"]
 readme = "README.md"
-packages = [{include = "product_backend_async"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
