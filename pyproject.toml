@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "product-backend-async"
+version = "0.1.0"
+description = "backend for product management"
+authors = ["Felipe <tomazalvesfelipe@gmail.com>"]
+readme = "README.md"
+packages = [{include = "product_backend_async"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.93.0"
+uvicorn = "^0.21.0"
+sqlalchemy = "^2.0.5.post1"
+psycopg2-binary = "^2.9.5"
+pytest = "^7.2.2"
+alembic = "^1.10.2"
+python-decouple = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
