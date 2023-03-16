@@ -99,6 +99,6 @@ def test_product_output_schema():
         'stock': 10,
         'category': {
             'name': 'Roupa',
-            'slug': 'roupa'
+            'slug': 'roupa',
         }
     }

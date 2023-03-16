@@ -75,7 +75,7 @@ def products_on_db(db_session):
         ProductModel(name='Shorts Nike', slug='shorts-nike',
                      price=100, stock=10, category_id=category.id),
         ProductModel(name='Regata Nike', slug='regata-nike',
-                     price=100, stock=10, category_id=category.id)
+                     price=100, stock=10, category_id=category.id),
     ]
 
     for product in products:
@@ -87,7 +87,7 @@ def products_on_db(db_session):
 
     yield products
 
-    for products in products:
+    for product in products:
         db_session.delete(product)
 
     db_session.delete(category)
