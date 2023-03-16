@@ -1,6 +1,7 @@
 
 import re
 from pydantic import validator
+from app.db.models import Category
 from app.schemas.base import CustomBaseModel
 
 
@@ -26,3 +27,8 @@ class Product(CustomBaseModel):
 class ProductInput(CustomBaseModel):
     category_slug: str
     product: Product
+
+
+class ProductOutput(Product):
+    id: int
+    category: Category
