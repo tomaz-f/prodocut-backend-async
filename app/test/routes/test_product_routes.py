@@ -87,12 +87,12 @@ def test_delete_product_route(db_session, product_on_db):
 
     assert response.status_code == status.HTTP_200_OK
 
-    product_on_db = db_session.query(ProductModel).all()
+    products_on_db = db_session.query(ProductModel).all()
 
-    assert len(product_on_db) == 0
+    assert len(products_on_db) == 0
 
 
-def test_delete_product_route_invalid_id(product_on_db):
-    response = client.delete(f'/product/delete/{product_on_db.id}')
+def test_delete_product_route_invalid_id():
+    response = client.delete(f'/product/delete/1')
 
     assert response.status_code == status.HTTP_404_NOT_FOUND
