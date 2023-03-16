@@ -1,7 +1,7 @@
 
 import re
 from pydantic import validator
-from app.db.models import Category
+from app.schemas.category import Category
 from app.schemas.base import CustomBaseModel
 
 
