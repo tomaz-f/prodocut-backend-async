@@ -70,3 +70,8 @@ Upgrade the database:
 ```bash
 docker compose run --user 1000 app sh -c 'alembic upgrade head'
 ```
+
+Run the tests
+```bash
+docker compose run app sh -c "pytest -vv"
+```
