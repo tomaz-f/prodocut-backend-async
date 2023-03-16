@@ -38,11 +38,16 @@ def categories_on_db(db_session):
 
 @pytest.fixture()
 def product_on_db(db_session):
+    category = CategoryModels(name='Carro', slug='carro')
+    db_session.add(category)
+    db_session.commit()
+
     product = ProductModel(
         name='Camisa-adidas',
         slug='camisa-adidas',
         price=100.99,
-        stock=20
+        stock=20,
+        category_id=category.id
     )
 
     db_session.add(product)
@@ -51,4 +56,5 @@ def product_on_db(db_session):
     yield product
 
     db_session.delete(product)
+    db_session.delete(category)
     db_session.commit()

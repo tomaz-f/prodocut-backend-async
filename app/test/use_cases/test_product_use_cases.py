@@ -56,7 +56,7 @@ def test_update_product(db_session, product_on_db):
     uc.update_product(id=product_on_db.id, product=product)
 
     product_updated_on_db = db_session.query(
-        ProductModel).filter_by(id=product_on_db.id)
+        ProductModel).filter_by(id=product_on_db.id).first()
 
     assert product_updated_on_db is not None
     assert product_updated_on_db.name == product.name
