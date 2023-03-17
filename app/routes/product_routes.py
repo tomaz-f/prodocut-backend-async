@@ -35,7 +35,7 @@ def update_product(
 
 
 @router.delete('/delete/{id}', description="Delete a product")
-def update_product(
+def delete_product(
     id: int,
     db_session: Session = Depends(get_db_session)
 ):
