@@ -103,7 +103,7 @@ def test_list_products_route(products_on_db):
 
     assert response.status_code == status.HTTP_200_OK
 
-    data - response.json()
+    data = response.json()
 
     assert len(data) == 4
 
