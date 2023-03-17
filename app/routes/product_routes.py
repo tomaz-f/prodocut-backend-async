@@ -46,8 +46,8 @@ def update_product(
 
 
 @router.get('/list')
-def list_product(db_session: Session = Depends(get_db_session)):
+def list_product(search: str = '', db_session: Session = Depends(get_db_session)):
     uc = ProductUseCases(db_session=db_session)
-    products = uc.list_products()
+    products = uc.list_products(search=search)
 
     return products
