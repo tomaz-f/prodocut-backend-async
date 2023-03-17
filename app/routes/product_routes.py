@@ -2,13 +2,13 @@ from fastapi import APIRouter, Response, Depends, status
 from sqlalchemy.orm import Session
 from app.routes.deps import get_db_session
 from app.use_cases.product import ProductUseCases
-from app.schemas.product import Product, ProductInput
+from app.schemas.product import Product, ProductInput, ProductOutput
+from typing import List
+
+router = APIRouter(prefix='/product', tags=['Product'])
 
 
-router = APIRouter(prefix='/product')
-
-
-@router.post('/add')
+@router.post('/add', status_code=status.HTTP_201_CREATED, description="Add new Product")
 def add_product(
     product_input: ProductInput,
     db_session: Session = Depends(get_db_session)
@@ -22,7 +22,7 @@ def add_product(
     return Response(status_code=status.HTTP_201_CREATED)
 
 
-@router.put('/update/{id}')
+@router.put('/update/{id}', description="Update product")
 def update_product(
     id: int,
     product: Product,
@@ -34,7 +34,7 @@ def update_product(
     return Response(status_code=status.HTTP_200_OK)
 
 
-@router.delete('/delete/{id}')
+@router.delete('/delete/{id}', description="Delete a product")
 def update_product(
     id: int,
     db_session: Session = Depends(get_db_session)
@@ -45,7 +45,7 @@ def update_product(
     return Response(status_code=status.HTTP_200_OK)
 
 
-@router.get('/list')
+@router.get('/list', response_model=List[ProductOutput], description="Return a list with products")
 def list_product(search: str = '', db_session: Session = Depends(get_db_session)):
     uc = ProductUseCases(db_session=db_session)
     products = uc.list_products(search=search)
