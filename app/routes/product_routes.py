@@ -43,3 +43,11 @@ def update_product(
     uc.delete_product(id=id)
 
     return Response(status_code=status.HTTP_200_OK)
+
+
+@router.get('/list')
+def list_product(db_session: Session = Depends(get_db_session)):
+    uc = ProductUseCases(db_session=db_session)
+    products = uc.list_products()
+
+    return products
