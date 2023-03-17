@@ -98,7 +98,7 @@ def test_delete_product_route_invalid_id():
     assert response.status_code == status.HTTP_404_NOT_FOUND
 
 
-def test_list_products(products_on_db):
+def test_list_products_route(products_on_db):
     response = client.get('/product/list')
 
     assert response.status_code == status.HTTP_200_OK
