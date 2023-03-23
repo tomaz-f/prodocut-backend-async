@@ -59,6 +59,21 @@ class UserUseCases:
 
         return token_data
 
+    def verify_token(self, token: str):
+        try:
+            data = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        except JWTError:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED, detail='Invalid token')
+
+        user_on_db = self._get_user(username=data['sub'])
+
+        if user_on_db is None:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail='Invalid token'
+            )
+
     def _get_user(self, username: str):
         user_on_db = self.db_session.query(
             UserModel). filter_by(username=username).first()
