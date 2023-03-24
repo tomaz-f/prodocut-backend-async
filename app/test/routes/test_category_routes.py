@@ -4,6 +4,8 @@ from fastapi import status
 from app.db.models import Category as CategoryModel
 
 client = TestClient(app)
+headers = {"Authorization": "bearer token"}
+client.headers = headers
 
 
 def test_add_category_route(db_session):
