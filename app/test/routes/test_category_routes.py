@@ -4,7 +4,7 @@ from fastapi import status
 from app.db.models import Category as CategoryModel
 
 client = TestClient(app)
-headers = {"Authorization": "bearer token"}
+headers = {"Authorization": "Bearer token"}
 client.headers = headers
 
 
