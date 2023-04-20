@@ -4,7 +4,7 @@ from app.db.models import Product as ProductModel
 from app.main import app
 
 client = TestClient(app)
-headers = {"Authorization": "bearer token"}
+headers = {"Authorization": "Bearer token"}
 client.headers = headers
 
 
