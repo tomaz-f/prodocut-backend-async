@@ -5,7 +5,7 @@ services:
     build:
       context: .
     ports:
-      - 8000:8000
+      - 9804:9804
     volumes:
       - ./app:/app
     command: sh -c "uvicorn main:app --host 0.0.0.0 --reload"
